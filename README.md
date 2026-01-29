@@ -1,5 +1,7 @@
 # NoMoreGoogleNews
 
+![No More Google News preview](README.png)
+
 I've used Google News for years, but I noticed I was bouncing into more paywalls and registration gates than I wanted.
 This extension helps me change that habit by nudging me toward other sources while still letting me continue if I want.
 
