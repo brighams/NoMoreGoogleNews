@@ -153,6 +153,7 @@ const tabButtons = Array.from(document.querySelectorAll(".tab"));
 const tabHeadlines = document.getElementById("tab-headlines");
 const tabSources = document.getElementById("tab-sources");
 const refreshButton = document.getElementById("refresh-headlines");
+const refreshMeta = document.getElementById("refresh-meta");
 
 let customSources = [];
 
@@ -372,6 +373,7 @@ function renderSources(sources) {
 async function renderHeadlines(sources) {
   headlinesList.innerHTML = "";
   headlinesStatus.textContent = "Loading headlines...";
+  updateRefreshMeta();
 
   const grouped = groupSourcesByCategory(sources);
   const tasks = [];
@@ -806,6 +808,16 @@ function setActiveTab(tabName) {
   tabSources.classList.toggle("hidden", tabName !== "sources");
 }
 
+function updateRefreshMeta() {
+  if (!refreshMeta) {
+    return;
+  }
+  const now = new Date();
+  const date = now.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  const time = now.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+  refreshMeta.textContent = `${date} ${time}`;
+}
+
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => setActiveTab(button.dataset.tab));
 });
@@ -813,6 +825,7 @@ tabButtons.forEach((button) => {
 loadSources();
 initContinueLink();
 setActiveTab("headlines");
+updateRefreshMeta();
 
 addSubmit.addEventListener("click", addSource);
 addCancel.addEventListener("click", () => {

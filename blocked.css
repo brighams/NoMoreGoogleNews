@@ -194,6 +194,13 @@ h1 {
   color: #a87406;
 }
 
+.tab-meta {
+  color: #c4911a;
+  font-size: 0.8rem;
+  font-family: "Optima", "Candara", "Lucida Sans Unicode", sans-serif;
+  white-space: nowrap;
+}
+
 .tab-panel.hidden {
   display: none !important;
 }
